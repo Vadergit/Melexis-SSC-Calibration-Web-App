@@ -6,7 +6,7 @@ from http.server import HTTPServer, SimpleHTTPRequestHandler
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 MODELS=('mlx90328','mlx90329')
-PARAM_NAMES=('O0','O1','O2','O3','G0','G1','G2','G3','L0','L1','Tpress Select','BRIDGE_SEL')
+PARAM_NAMES=('O0','O1','O2','O3','G0','G1','G2','G3','L0','L1','Tpress Select','BRIDGE_SEL','CG','CO','PFLT','SSF')
 def finite(x):
     if isinstance(x,bool) or not isinstance(x,(int,float)) or not math.isfinite(x): raise ValueError('Expected finite SDK number')
     return x

@@ -1,4 +1,4 @@
-export const PARAM_NAMES=Object.freeze(['O0','O1','O2','O3','G0','G1','G2','G3','L0','L1','Tpress Select','BRIDGE_SEL']);
+export const PARAM_NAMES=Object.freeze(['O0','O1','O2','O3','G0','G1','G2','G3','L0','L1','Tpress Select','BRIDGE_SEL','CG','CO','PFLT','SSF']);
 export const equalBytes=(a,b)=>a.length===b.length&&a.every((v,i)=>v===b[i]);
 export function hexDump(bytes){return Array.from({length:Math.ceil(bytes.length/16)},(_,i)=>(i*16).toString(16).padStart(4,'0')+'  '+bytes.slice(i*16,i*16+16).map(x=>x.toString(16).toUpperCase().padStart(2,'0')).join(' ')).join('\n')}
 export class HostClient{
