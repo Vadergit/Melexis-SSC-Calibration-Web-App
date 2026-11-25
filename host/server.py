@@ -19,7 +19,7 @@ class Mock:
     def capabilities(self,model): return ['sample','eeprom','ram']
     def sample(self,model):
         self.i+=1
-        return {'raw':5000+self.i%7,'temperature':25.0,'adcT':1234,'dsp':None}
+        return {'identity':'SIMULATION-'+model,'raw':5000+self.i%7,'temperature':25.0,'adcT':1234,'dsp':None}
     def memory(self,model,space):
         return {'identity':'SIMULATION-'+model,'bytes':list(range(64 if space=='eeprom' else 16)),'parameters':{}}
 class COM:
@@ -61,7 +61,7 @@ class COM:
         out={key:finite(self.call(model,spec)) for key,spec in p['sample'].items() if key in ('raw','temperature','adcT','dsp')}
         if 'raw' not in out: raise ValueError('SDK profile needs pressure raw reading')
         if before!=self.identity(model): raise ValueError('Sensor changed during read')
-        return out
+        return {'identity':before,**out}
     def memory(self,model,space):
         p=self.spec(model); before=self.identity(model)
         result=bytes_result(self.call(model,p[space]))
@@ -81,8 +81,10 @@ def dispatch(backend,op,data):
         count=data.get('count')
         if type(count)!=int or not 1<=count<=100: raise ValueError('Samples must be 1–100')
         rows=[backend.sample(model) for _ in range(count)]
-        return {'model':model,'samples':count,**{key:statistics.mean([finite(row[key]) for row in rows]) for key in rows[0] if all(row.get(key) is not None for row in rows)}}
-    if op in ('eeprom','ram'): return {'model':model,**backend.memory(model,op)}
+        ident=rows[0].get('identity')
+        if not ident or any(row.get('identity')!=ident for row in rows): raise ValueError('Sensor changed during sample batch')
+        return {'model':model,'identity':ident,'mode':backend.mode,'samples':count,**{key:statistics.mean([finite(row[key]) for row in rows]) for key in ('raw','temperature','adcT','dsp') if all(row.get(key) is not None for row in rows)}}
+    if op in ('eeprom','ram'): return {'model':model,'mode':backend.mode,**backend.memory(model,op)}
     raise ValueError('Operation not permitted; read-only bridge')
 def handler_for(backend,port):
     class Handler(SimpleHTTPRequestHandler):
