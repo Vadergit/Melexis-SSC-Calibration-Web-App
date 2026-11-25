@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.3.0 — 2026-11-25
+- Originale ELMOS-Master-CSS, Header, acht Aufgabenkacheln und geführte Navigation.
+- Geführt, klassisch, kompakt; Referenztemperaturen, 2–5 Druckpunkte, AFE-Modellgraph und separate Berechnung/Prüfung.
+- EEPROM-Rohdatenimport, Offline-Logging, Archivsuche und Druckbericht.
+- Keine Hardwarefreigabe; keine ELMOS-Befehle oder Register übernommen.
+
 ## v0.2.0 — 2026-11-25
 - ELMOS-orientierte geführte Offline-Kalibrierung.
 - MLX90328/90329: 32 nominale AFE-Stufen, Offset-DAC und ADC-Reserve.
