@@ -1,0 +1,4 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {fitTemperature,predict,verify} from '../temperature.mjs';
+const p=[{temperature:25,raw:100,reference:0},{temperature:25,raw:200,reference:100},{temperature:75,raw:200,reference:0},{temperature:75,raw:300,reference:100}];
+test('two temperature interpolation',()=>{const m=fitTemperature(p,2,2);assert.equal(predict(m,50,200),50);assert.equal(verify(m,50,200,50,100,.5).pass,true);assert.equal(verify(m,50,200,51,100,.5).pass,false)});
+test('reject extrapolation and bad matrix',()=>{const m=fitTemperature(p,2,2);assert.throws(()=>predict(m,80,200));assert.throws(()=>fitTemperature(p.slice(1),2,2));assert.throws(()=>verify(m,50,200,50,0,.5));});

@@ -1,0 +1,4 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {planAFE,gainStages} from '../afe.mjs';
+test('32 gain codes and overlapping gain bands',()=>{assert.equal(gainStages.length,32);assert.ok(Math.abs(gainStages[0].gain-8.98)<1e-9);assert.ok(Math.abs(gainStages[31].gain-237.44)<1e-9);assert.ok(gainStages[16].gain<gainStages[15].gain)});
+test('4 mV/V 3 V bridge: nominal gain near target without overshoot',()=>{const r=planAFE({span:4,offset:0,bridgeV:3});assert.equal(r.recommended.code,26);assert.ok(r.recommended.adcSpan<32768);assert.ok(r.recommended.headroom>0)});
+test('negative span, offset saturation and invalid values',()=>{const p=planAFE({span:-4,offset:2,bridgeV:3});assert.ok(p.recommended);assert.ok(p.recommended.adcEnd<p.recommended.adcStart);assert.equal(planAFE({span:4,offset:1000,bridgeV:3}).recommended,null);assert.throws(()=>planAFE({span:0,offset:0,bridgeV:3}))});
