@@ -6,6 +6,9 @@ Geführter Laborassistent nach dem ELMOS-Master: Sensor und Bereich, AFE-Abschä
 
 **Status: Offline-Prototyp.** Manuelle Werte und Simulation; generische lineare Modelle pro Temperatur mit Interpolation, keine Melexis-Festpunktkoeffizienten. Keine Hardwarekommunikation und keine RAM-/EEPROM-Schreiboperationen. Keine Produktionsfreigabe. Die Toleranzprüfung ist nur eine Modellprüfung, keine Chip-Verifikation.
 
+## v0.2.0
+32 nominale AFE-Gain-Stufen für beide Modelle mit Offset-DAC-Abschätzung, ADC-Reserve und Eingangsschritt; Sitzung speichern/laden, lokales Berichtsarchiv, Standardmesspunkte 10–90 %. [Hardware-Freigabepfad](docs/HARDWARE.md).
+
 ## Start und Tests
 `python3 -m http.server 8000 --bind 127.0.0.1`, dann http://127.0.0.1:8000/. Tests: `node --test tests/*.test.mjs`.
 
