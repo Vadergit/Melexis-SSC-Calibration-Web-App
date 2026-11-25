@@ -43,6 +43,7 @@ jobs:
           arduino-cli config add board_manager.additional_urls https://espressif.github.io/arduino-esp32/package_esp32_index.json
           arduino-cli config add board_manager.additional_urls https://raw.githubusercontent.com/sparkfun/Arduino_Boards/main/IDE_Board_Manager/package_sparkfun_index.json
           arduino-cli core update-index
+          if [ '${{ matrix.core }}' = 'SparkFun:avr' ]; then arduino-cli core install arduino:avr; fi
           arduino-cli core install ${{ matrix.core }}
       - run: arduino-cli compile --fqbn '${{ matrix.fqbn }}' --output-dir build firmware/${{ matrix.sketch }}
       - uses: actions/upload-artifact@v4
