@@ -1,5 +1,8 @@
 # Melexis SSC Calibration Web App
 
+**0.6.0-beta.1: Software- und USB-Diagnose-Testbeta; keine Freigabe für echte Chipkalibrierung.** [Testanleitung](docs/TESTING.md).
+
+
 [Web-App](https://vadergit.github.io/Melexis-SSC-Calibration-Web-App/) · [SSC Calibration Studio](https://vadergit.github.io/SSC-Calibration-Studio/)
 
 Geführter Laborassistent nach dem ELMOS-Master: Sensor und Bereich, AFE-Abschätzung, Druck-/Temperaturmatrix, unabhängige Prüfung mit Toleranzgraph, Ausgangsentwurf, JSON/CSV und Druck/PDF. MLX90328 analog, MLX90329 SENT.

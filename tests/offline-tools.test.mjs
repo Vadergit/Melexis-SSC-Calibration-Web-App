@@ -1,0 +1,5 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {filterPlan,analogPlan,hysteresis,BrowserSimulation} from '../offline-tools.mjs';
+test('PFLT values',()=>{assert.equal(filterPlan(0).alpha,1);assert.equal(filterPlan(9).responseMs,203.8);assert.throws(()=>filterPlan(10))});
+test('analog range',()=>{const p={vdd:5,low:.5,high:4.5,clampLow:5,clampHigh:95};assert.equal(analogPlan(p).valid,true);assert.equal(analogPlan({...p,clampLow:12.5}).valid,false);assert.throws(()=>analogPlan({...p,clampHigh:40}))});
+test('hysteresis',()=>{const p={temperature:25,reference:50};const r=hysteresis([{...p,predicted:49,direction:'up'},{...p,predicted:51,direction:'down'}],100);assert.equal(r[0].errorFS,2)});
+test('browser simulation marked and read-only',async()=>{const s=new BrowserSimulation();assert.equal((await s.info('mlx90328')).chipDetected,false);assert.equal((await s.sample('mlx90328',12)).raw,45500);assert.deepEqual(await s.memory('mlx90328','eeprom'),await s.memory('mlx90328','eeprom'));await assert.rejects(s.memory('mlx90328','write'))});

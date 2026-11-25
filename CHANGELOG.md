@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.6.0-beta.1
+- Browser-Testsimulation, Hysterese, MLX90328-Clamping und Filterentwurf, automatisierte Tests und Firmware-Buildworkflow.
+- Keine Hardwarefreigabe.
+
 ## v0.5.0
 - Gemeinsames MLX1-USB-Protokoll für ESP32-C3 und Pro Micro, Web Serial und Firmware-Quellcode.
 - Original PTC-04 + PRESSURE01 weiterhin separat über Windows SDK.

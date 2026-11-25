@@ -1,0 +1,51 @@
+name: Test Beta
+on:
+  push:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  software:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --test tests/*.test.mjs
+      - run: python3 -m unittest discover -s host -p 'test_*.py'
+      - run: npm install --no-save playwright
+      - run: npx playwright install --with-deps chromium
+      - run: node tests/browser-smoke.mjs
+  firmware:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - board: esp32-c3
+            core: esp32:esp32
+            fqbn: esp32:esp32:esp32c3:CDCOnBoot=cdc
+            sketch: esp32c3_supermini
+          - board: pro-micro-16mhz
+            core: SparkFun:avr
+            fqbn: SparkFun:avr:promicro:cpu=16MHzatmega32U4
+            sketch: pro_micro
+          - board: pro-micro-8mhz
+            core: SparkFun:avr
+            fqbn: SparkFun:avr:promicro:cpu=8MHzatmega32U4
+            sketch: pro_micro
+    steps:
+      - uses: actions/checkout@v4
+      - uses: arduino/setup-arduino-cli@v2
+      - run: |
+          arduino-cli config init
+          arduino-cli config add board_manager.additional_urls https://espressif.github.io/arduino-esp32/package_esp32_index.json
+          arduino-cli config add board_manager.additional_urls https://raw.githubusercontent.com/sparkfun/Arduino_Boards/main/IDE_Board_Manager/package_sparkfun_index.json
+          arduino-cli core update-index
+          arduino-cli core install ${{ matrix.core }}
+      - run: arduino-cli compile --fqbn '${{ matrix.fqbn }}' --output-dir build firmware/${{ matrix.sketch }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: diagnostic-${{ matrix.board }}
+          path: build/
