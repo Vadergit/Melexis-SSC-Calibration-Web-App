@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.4.0
+- Lokaler SDK-Lesepfad, EEPROM-Doppellesung, RAM-Dump, Live- und Messpunktaufnahme.
+- Konfigurierbares COM-Profil ohne erfundene Methoden, getrennte Testsimulation.
+- Hardwarevalidierung und Schreibpfad offen.
+
 ## v0.3.0 — 2026-11-25
 - Originale ELMOS-Master-CSS, Header, acht Aufgabenkacheln und geführte Navigation.
 - Geführt, klassisch, kompakt; Referenztemperaturen, 2–5 Druckpunkte, AFE-Modellgraph und separate Berechnung/Prüfung.
