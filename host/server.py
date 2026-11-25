@@ -16,6 +16,7 @@ def bytes_result(v):
 class Mock:
     mode='simulation'
     def __init__(self): self.i=0
+    def identity(self,model): return 'SIMULATION-'+model
     def capabilities(self,model): return ['sample','eeprom','ram']
     def sample(self,model):
         self.i+=1
@@ -76,7 +77,7 @@ class COM:
 def dispatch(backend,op,data):
     model=data.get('model')
     if model not in MODELS: raise ValueError('Unknown model')
-    if op=='info': return {'model':model,'mode':backend.mode,'capabilities':backend.capabilities(model)}
+    if op=='info': return {'model':model,'mode':backend.mode,'capabilities':backend.capabilities(model),'identity':backend.identity(model)}
     if op=='sample':
         count=data.get('count')
         if type(count)!=int or not 1<=count<=100: raise ValueError('Samples must be 1–100')

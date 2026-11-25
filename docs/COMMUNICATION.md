@@ -28,3 +28,6 @@ http://127.0.0.1:8765/ öffnen; Verbindung → PTC-04 lokaler SDK-Adapter → ve
 
 ## Für die echte Fertigstellung benötigt
 Modellspezifische PSF-API-Dokumentation (inkl. Init und Rückgabeformat), Typbibliothek bzw. COM-Discovery, echte Beispiel-EEPROM-Dumps, vollständige Registerbeschreibung und Programmier-/Schutzsequenzen; anschliessend Test mit PTC-04 und realem Sensor.
+
+## v0.4.1
+Adapterantworten sind an Modell, Identität und Betriebsmodus gebunden. EEPROM-Abbilder können byteweise verglichen werden; das Kommunikationsprotokoll ist exportierbar. Der AFE-Rechner berücksichtigt die nominelle negative ADC-Steigung und kann Spanne/Nullpunkt aus zwei Referenzmessungen zurückrechnen (Datenblatt Abschnitt 11). Keine Chip-Programmierung.

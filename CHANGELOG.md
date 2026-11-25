@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.4.1
+- ADC-Polarität nach Datenblatt korrigiert, nominelle Brücken-Rückrechnung.
+- SDK-Identitätsprüfung, Schutz vor Wechsel während Messaufnahme, EEPROM-Diff, Diagnoseexport.
+
 ## v0.4.0
 - Lokaler SDK-Lesepfad, EEPROM-Doppellesung, RAM-Dump, Live- und Messpunktaufnahme.
 - Konfigurierbares COM-Profil ohne erfundene Methoden, getrennte Testsimulation.

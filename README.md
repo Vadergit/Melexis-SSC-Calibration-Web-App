@@ -6,6 +6,9 @@ Geführter Laborassistent nach dem ELMOS-Master: Sensor und Bereich, AFE-Abschä
 
 **Status: Offline-Prototyp.** Manuelle Werte und Simulation; generische lineare Modelle pro Temperatur mit Interpolation, keine Melexis-Festpunktkoeffizienten. Keine Hardwarekommunikation und keine RAM-/EEPROM-Schreiboperationen. Keine Produktionsfreigabe. Die Toleranzprüfung ist nur eine Modellprüfung, keine Chip-Verifikation.
 
+## v0.4.1
+Korrektur ADC-Polarität, Brücken-Rückrechnung, EEPROM-Vergleich, Diagnoseexport und Sensorwechsel-Schutz. Hersteller-SDK-Profil und Hardwaretests weiterhin erforderlich.
+
 ## v0.4.0
 Lokaler read-only SDK-Adapter (Windows COM, explizites Profil), Live-Messung, EEPROM-Doppellesung und Backup, RAM-Rohdaten, Messwertaufnahme und Testsimulation. **Noch keine validierte echte Chipkommunikation**; Setup und fehlende Informationen: [Kommunikation](docs/COMMUNICATION.md).
 
