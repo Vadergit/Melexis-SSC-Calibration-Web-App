@@ -6,6 +6,9 @@ Geführter Laborassistent nach dem ELMOS-Master: Sensor und Bereich, AFE-Abschä
 
 **Status: Offline-Prototyp.** Manuelle Werte und Simulation; generische lineare Modelle pro Temperatur mit Interpolation, keine Melexis-Festpunktkoeffizienten. Keine Hardwarekommunikation und keine RAM-/EEPROM-Schreiboperationen. Keine Produktionsfreigabe. Die Toleranzprüfung ist nur eine Modellprüfung, keine Chip-Verifikation.
 
+## v0.3.0
+Original ELMOS-Master-Styles und Header-Struktur (Commit 13220433b1bde9b6ff8747f6fecf5262c1f85213), acht Aufgabenkacheln, geführte/klassische/kompakte Darstellung, Messplanung, AFE-Grafik, Offline-Logging, EEPROM-Heximport und Archivsuche. Keine ELMOS-Hardwarelogik übernommen. Alle realen Schreibfunktionen gesperrt.
+
 ## v0.2.0
 32 nominale AFE-Gain-Stufen für beide Modelle mit Offset-DAC-Abschätzung, ADC-Reserve und Eingangsschritt; Sitzung speichern/laden, lokales Berichtsarchiv, Standardmesspunkte 10–90 %. [Hardware-Freigabepfad](docs/HARDWARE.md).
 
