@@ -6,6 +6,9 @@ Geführter Laborassistent nach dem ELMOS-Master: Sensor und Bereich, AFE-Abschä
 
 **Status: Offline-Prototyp.** Manuelle Werte und Simulation; generische lineare Modelle pro Temperatur mit Interpolation, keine Melexis-Festpunktkoeffizienten. Keine Hardwarekommunikation und keine RAM-/EEPROM-Schreiboperationen. Keine Produktionsfreigabe. Die Toleranzprüfung ist nur eine Modellprüfung, keine Chip-Verifikation.
 
+## v0.5.0
+Drei Adapter: ESP32-C3 und Pro Micro über Web Serial/MLX1, PTC-04 + PRESSURE01 über SDK-Host. [Firmware und Protokoll](docs/MLX1.md). DIY-Standardfirmware nur USB-Diagnose; kein Melexis-Wire-Treiber oder Hardwarefreigabe.
+
 ## v0.4.1
 Korrektur ADC-Polarität, Brücken-Rückrechnung, EEPROM-Vergleich, Diagnoseexport und Sensorwechsel-Schutz. Hersteller-SDK-Profil und Hardwaretests weiterhin erforderlich.
 

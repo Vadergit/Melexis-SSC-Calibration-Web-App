@@ -31,3 +31,6 @@ Modellspezifische PSF-API-Dokumentation (inkl. Init und Rückgabeformat), Typbib
 
 ## v0.4.1
 Adapterantworten sind an Modell, Identität und Betriebsmodus gebunden. EEPROM-Abbilder können byteweise verglichen werden; das Kommunikationsprotokoll ist exportierbar. Der AFE-Rechner berücksichtigt die nominelle negative ADC-Steigung und kann Spanne/Nullpunkt aus zwei Referenzmessungen zurückrechnen (Datenblatt Abschnitt 11). Keine Chip-Programmierung.
+
+## v0.5.0: drei Adapter
+ESP32-C3 und Pro Micro verwenden direkt Web Serial über das gemeinsame [MLX1](MLX1.md)-USB-Protokoll. Firmware-Quellen unter firmware/. Standardfirmware erkennt ausschliesslich USB, kein SSC-Treiber. Expliziter Testbuild für Simulation. PTC-04 mit PRESSURE01 bleibt als Originaladapter über lokalen Windows-SDK-Host auswählbar; das konkrete PSF-Profil ist noch erforderlich.

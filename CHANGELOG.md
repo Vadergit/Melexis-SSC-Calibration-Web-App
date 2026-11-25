@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.5.0
+- Gemeinsames MLX1-USB-Protokoll für ESP32-C3 und Pro Micro, Web Serial und Firmware-Quellcode.
+- Original PTC-04 + PRESSURE01 weiterhin separat über Windows SDK.
+- Echte Chipkommunikation und Schreibpfad nicht freigegeben.
+
 ## v0.4.1
 - ADC-Polarität nach Datenblatt korrigiert, nominelle Brücken-Rückrechnung.
 - SDK-Identitätsprüfung, Schutz vor Wechsel während Messaufnahme, EEPROM-Diff, Diagnoseexport.

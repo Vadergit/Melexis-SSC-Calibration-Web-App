@@ -94,7 +94,7 @@ def handler_for(backend,port):
             if self.path.split('?')[0].startswith('/api/'): self.send_error(405); return
             # Only the published web assets, no local profiles or SDK files.
             path=self.path.split('?')[0]
-            if not (path=='/' or path.startswith('/master/') or path.startswith('/docs/') or path in ('/index.html','/style.css','/app.mjs','/afe.mjs','/catalog.mjs','/calibration.mjs','/temperature.mjs','/session.mjs','/host-client.mjs')) or '..' in path or '%' in path or '\\' in path: self.send_error(404);return
+            if not (path=='/' or path.startswith('/master/') or path.startswith('/docs/') or path.startswith('/firmware/') or path in ('/index.html','/style.css','/app.mjs','/afe.mjs','/catalog.mjs','/calibration.mjs','/temperature.mjs','/session.mjs','/host-client.mjs','/serial-adapter.mjs','/firmware.html')) or '..' in path or '%' in path or '\\' in path: self.send_error(404);return
             super().do_GET()
         def do_POST(self):
             try:
